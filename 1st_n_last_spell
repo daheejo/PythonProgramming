@@ -1,0 +1,19 @@
+from collections import Counter #collections에서 Counter 모듈을 임포트 
+
+with open('test.txt','rt',encoding='utf-8') as f:
+    data=f.read() #with문으로 첨부파일을 열고 오픈한다.
+data=data.lower() #대문자도 인식하기 위해 데이터를 소문자로 변환한다.
+removal="-.[]()" #단어 끊기에 방해가 되는 기호들을 removal 변수에 저장한다.
+for x in range(len(removal)):
+    data=data.replace(removal[x]," ") #removal 안에 저장돼있는 기호들을 빈 칸으로 대체한다.
+words = data.split() #데이터를 단어 별로 쪼갠다.
+
+start=input('시작 문자열 입력:')
+end=input('끝 문자열 입력:')
+
+wordlist=[]
+for word in words:
+    if word.startswith(start) and word.endswith(end):
+        wordlist.append(word)
+        count = Counter(wordlist) #wordlist라는 리스트를 생성한 후 startswith()와 endswith 메서드를 이용해 시작 문자열과 끝 문자열을 모두 만족하는 단어를 구하고 이를 append()메서드를 통해 wordlist에 요소로 삽입한다.
+print(Counter(wordlist).most_common()) #Counter를 이용해 wordlist 요소의 개수를 세며, Counter 내의 most_common()을 이용해 최다 개수 순으로 정렬한다.
