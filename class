@@ -1,0 +1,60 @@
+class Complex:
+    def __init__(self, real, image):
+        self.real = real
+        self.image = image
+
+    def __add__(self, c):
+        real = self.real + c.real
+        image = self.image + c.image
+        return Complex(real, image)
+    def __sub__(self, c):
+        real = self.real - c.real
+        image = self.image - c.image
+        return Complex(real, image)
+
+    def __str__(self):
+        op = '+' if self.image >= 0 else '-'
+        return '%d %s %di' % (self.real, op, abs(self.image))
+
+#---------------------------아래부터 추가된 기능----------------------------------
+
+    def __neg__(self):
+        real = -self.real
+        image = -self.image
+        return Complex(real, image)
+ # real과 image에 각각 객체 self와 image에 –를 붙이도록 설정하여 리턴한다.
+
+    def __mul__(self, c):  
+        real = self.real * c.real
+        image = self.image * c.image
+        return Complex(real, image)
+ # real과 image에 각각 객체 self와 c끼리 곱하도록 설정하여 리턴한다.
+
+    def __truediv__(self, c):
+        real = self.real / c.real
+        image = self.image / c.image
+        return Complex(real, image)
+ # 나눗셈 메서드엔 __div__()와 __truediv__()가 있는데, __div__메서드는 파이썬2만 가능하므로  __truediv__를 사용한다. real과 image에 각각 객체 self와 c끼리 나누도록 설정하여 리턴한다. 
+
+    def __pow__(self, power, modulo=None):
+        real = self.real**2
+        image = self.image**2
+        return Complex(real, image)
+ # real과 image에 각각 객체 self에 제곱하도록 설정하여 리턴한다.
+
+c1 = Complex(2, 3)
+c2 = Complex(4, 5)
+c3 = c1 + c2
+c4 = c1 - c2
+c5 = c1 * c2
+c6 = c2 / c1
+c7 = c2**2
+
+print(c1) # 2 +３i 출력
+print(c2) # 4 + 5i 출력
+print(c3) # 6 + 8i 출력, __add__() 특수메서드 테스트
+print(c4) # -2 – 2i 출력, __sub__() 특수메서드 테스트
+print(-c1) # -2 – 3i 출력, __neg__() 특수메서드 테스트
+print(c5) # 8 + 15i 출력, __mul__() 특수메서드 테스트
+print(c6) # 2+ 1i 출력, __truediv__() 특수메서드 테스트
+print(c7) # 16 + 25i 출력, __pow__() 특수메서드 테스트
