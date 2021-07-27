@@ -2,7 +2,7 @@ import numpy as np
 
 array = np.array(range(5))
 
-print("1차원 array")
+>> 1차원 array
 array = np.array(range(10))
 print(array) #[0 1 2 3 4 5 6 7 8 9]
 
@@ -27,3 +27,47 @@ print(array[5]) #5
 
 # 7. array의 인덱스 3의 요소부터 인덱스 5 요소
 print(array[3:6]) #[3 4 5]
+
+
+>> 2차원 array
+
+#1부터 15까지 들어있는 (3,5)짜리 배열
+matrix = np.array(range(1,16))
+matrix.shape = 3,5
+print(matrix)
+
+#[[ 1  2  3  4  5]
+ [ 6  7  8  9 10]
+ [11 12 13 14 15]]
+
+# 1. matrix의 자료형
+print(type(matrix)) #<class 'numpy.ndarray'>
+
+# 2. matrix의 차원
+print(matrix.ndim) #2
+
+# 3. matrix의 모양
+print(matrix.shape) #(3, 5)
+
+# 4. matrix의 크기
+print(matrix.size) #15
+
+# 5. matrix의 dtype(data type)
+print(matrix.dtype) #int64
+
+# 6. matrix의 dtype을 str로 변경
+print(matrix.astype('str'))
+
+#[['1' '2' '3' '4' '5']
+ ['6' '7' '8' '9' '10']
+ ['11' '12' '13' '14' '15']]
+
+# 7. matrix의 (2,3) 인덱스의 요소
+print(matrix[2,3]) #14
+
+# 8. matrix의 행은 인덱스 0부터 인덱스 1까지, 열은 인덱스 1부터 인덱스 3까지 출력
+print(matrix[0:2,1:4]) 
+#[[2 3 4]
+ [7 8 9]]
+
+
